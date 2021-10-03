@@ -59,8 +59,12 @@ func main() {
 	a := 0
 	if len(firstNum) > len(secondNum) {
 		fmt.Println(">")
+
+		a = 1
 	} else if len(firstNum) < len(secondNum) {
 		fmt.Println("<")
+
+		a = 1
 	} else {
 
 		for k := range firstNum {
@@ -68,7 +72,7 @@ func main() {
 				if firstNum[k] > secondNum[k] {
 					fmt.Println(">")
 					a = 1
-				} else {
+				} else if firstNum[k] < secondNum[k] {
 					fmt.Println("<")
 					a = 1
 				}
