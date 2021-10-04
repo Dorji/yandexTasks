@@ -1,4 +1,4 @@
-CREATE TABLE genre
+CREATE TABLE public.genre
 (
     id bigint PRIMARY KEY,
     name varchar(100) NOT NULL,
@@ -6,11 +6,15 @@ CREATE TABLE genre
     FOREIGN KEY (parent_genre_id) REFERENCES genre(id)
 );
 
+ALTER TABLE public.genre OWNER TO docker;
+
 CREATE TABLE track
 (
     id bigint PRIMARY KEY ,
     name varchar(100) NOT NULL
 );
+
+ALTER TABLE public.track OWNER TO docker;
 
 CREATE TABLE track_genre
 (
@@ -21,7 +25,9 @@ CREATE TABLE track_genre
     FOREIGN KEY (genre_id) REFERENCES genre(id)
 );
 
-INSERT INTO genre(id, name, parent_genre_id)
+ALTER TABLE public.track_genre OWNER TO docker;
+
+INSERT INTO public.genre(id, name, parent_genre_id)
 VALUES
     (1, 'pop', null),
     (2, 'rock', null),
@@ -40,7 +46,7 @@ VALUES
     (15, 'horror punk', 9);
 
 
-INSERT INTO track(id, name)
+INSERT INTO public.track(id, name)
 VALUES
     (1, 'Hallowed Be Thy Name'),
     (2, 'Boys Don''t Cry'),
@@ -48,7 +54,7 @@ VALUES
     (4, 'You Give Love A Bad Name'),
     (5, 'Since I''ve Been Loving You');
 
-INSERT INTO track_genre(track_id, genre_id)
+INSERT INTO public.track_genre(track_id, genre_id)
 VALUES
     (1, 12),
     (2, 14),
